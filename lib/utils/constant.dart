@@ -16,3 +16,15 @@ const kTextFieldDecoration = InputDecoration(
     borderRadius: BorderRadius.all(Radius.circular(7)),
   ),
 );
+
+const String messagephotoprofile = "Elige una foto para tu perfil";
+const String messagebuttonupdate = "Update";
+const String messagesignin = "Sign In";
+const String messagebuttonlogin = "Login";
+const String messageenteramail = "Please enter Email";
+const String messageenterapassword = "Please enter password";
+const String hinttextmail = "Email";
+const String hinttextpassword = "Password";
+const String titleApplication = "My Concierge";
+const String titleMenuPerfil = "My Perfil";
+const String titleMenuLogout = "Logout";

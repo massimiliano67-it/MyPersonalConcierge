@@ -19,7 +19,9 @@ void main() async {
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
   @override
+
   FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+
   Widget build(BuildContext context) {
 
     return MultiProvider(

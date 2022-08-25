@@ -28,6 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
     User? user = FirebaseAuth.instance.currentUser;
 
     if (user != null) {
+      print(user.displayName);
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (context) => HomePage(
@@ -42,8 +43,12 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     //context.read<AnalyticsUtils>().setUserLanguage("eSN");
-
+    future: _initializeFirebase();
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor:const Color(0xFF3E1F92) ,
+        title: const Text(titleApplication),
+      ),
       body: isloading
           ? const Center(
               child: CircularProgressIndicator(),
@@ -57,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Container(
                       height: double.infinity,
                       width: double.infinity,
-                      color: const Color(0xFF3E1F92),
+                      //color: const Color(0xFF3E1F92),
                       child: SingleChildScrollView(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 25, vertical: 120),
@@ -65,31 +70,31 @@ class _LoginScreenState extends State<LoginScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const Text(
-                              "Sign In",
+                              messagesignin,
                               style: TextStyle(
                                   fontSize: 50,
-                                  color: Colors.white,
+                                  color: Color(0xFF1414D2),
                                   fontWeight: FontWeight.bold),
                             ),
                             const SizedBox(height: 30),
                             TextFormField(
                               keyboardType: TextInputType.emailAddress,
-                              style: const TextStyle(color: Colors.white),
+                              style: const TextStyle(color: Color(0xFF1414D2)),
                               onChanged: (value) {
                                 email = value;
                               },
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return "Please enter Email";
+                                  return messageenteramail;
                                 }
                               },
                               textAlign: TextAlign.center,
                               decoration: kTextFieldDecoration.copyWith(
-                                hintText: 'Email',
-                                hintStyle: const TextStyle(color: Colors.white),
+                                hintText: hinttextmail,
+                                hintStyle: const TextStyle(color: Color(0xFF1414D2)),
                                 prefixIcon: const Icon(
                                   Icons.email,
-                                  color: Colors.white,
+                                  color: Color(0xFF1414D2),
                                 ),
                               ),
                             ),
@@ -98,26 +103,26 @@ class _LoginScreenState extends State<LoginScreen> {
                               obscureText: true,
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return "Please enter Password";
+                                  return messageenterapassword;
                                 }
                               },
-                              style: const TextStyle(color: Colors.white),
+                              style: const TextStyle(color: Color(0xFF1414D2)),
                               onChanged: (value) {
                                 password = value;
                               },
                               textAlign: TextAlign.center,
                               decoration: kTextFieldDecoration.copyWith(
-                                  hintText: 'Password',
+                                  hintText: hinttextpassword,
                                   hintStyle:
-                                      const TextStyle(color: Colors.white),
+                                      const TextStyle(color: Color(0xFF1414D2)),
                                   prefixIcon: const Icon(
                                     Icons.lock,
-                                    color: Colors.white,
+                                    color: Color(0xFF1414D2),
                                   )),
                             ),
                             const SizedBox(height: 80),
-                            LoginSignupButton(
-                              title: 'Login',
+                            ElevateGenericButton(
+                              title: messagebuttonlogin,
                               ontapp: () async {
                                 if (formkey.currentState!.validate()) {
                                   setState(() {
@@ -190,7 +195,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   Text(
                                     "Don't have an Account ?",
                                     style: TextStyle(
-                                        fontSize: 20, color: Colors.white),
+                                        fontSize: 20, color: Color(0xFF1414D2)),
                                   ),
                                   SizedBox(width: 10),
                                   Hero(
@@ -200,7 +205,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       style: TextStyle(
                                           fontSize: 21,
                                           fontWeight: FontWeight.bold,
-                                          color: Colors.white),
+                                          color: Color(0xFF1414D2)),
                                     ),
                                   )
                                 ],
